@@ -3,6 +3,7 @@ package za.ac.cput.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /***
@@ -16,10 +17,13 @@ public class Faculty
 {
     @Id
     @GeneratedValue
+    @NotNull
     private long facultyId;
 
+    @NotNull
     private String facultyName;
 
+    @NotNull
     private String facultyDescription;
 
     protected Faculty(){ }

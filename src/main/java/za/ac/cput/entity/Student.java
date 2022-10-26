@@ -10,17 +10,23 @@ ADP 3 Assignment Group1
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 public class Student
 {
     // private attributes
+    @NotNull
     private String firstName;
+
     private String middleName;
+
+    @NotNull
     private String lastName;
 
     @Id
+    @NotNull
     private long studentNumber;
 
     protected Student()
@@ -54,18 +60,15 @@ public class Student
 
 
     @Override
-     public boolean equals(Object e)
-    {
-       if (this == e) return true;
-       if (e == null || getClass() != e.getClass()) return false;
-       Student student = (Student) e;
-       return firstName.equals(student.firstName) && middleName.equals(student.middleName)
-            && lastName.equals(student.lastName);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentNumber == student.studentNumber && Objects.equals(firstName, student.firstName) && Objects.equals(middleName, student.middleName) && Objects.equals(lastName, student.lastName);
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(firstName, middleName, lastName, studentNumber);
     }
 
